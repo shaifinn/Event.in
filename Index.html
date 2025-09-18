@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Hosting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">Event Hosting</div>
+        <nav class="nav">
+            <a href="#">Upcoming Events</a>
+            <a href="#">Past Events</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Your Event Hub</h1>
+            <p>Plan, promote, and host your dream events with ease.</p>
+            <button class="btn">Get Started</button>
+        </div>
+    </main>
+
+    <section class="events">
+        <h2>Upcoming Events</h2>
+        <div class="events-grid">
+            <div class="event-card">
+                <img src="https://via.placeholder.com/400x250.png?text=Rehan%27s+Party" alt="Rehan's Party">
+                <div class="event-info">
+                    <h3>Rehan's Party</h3>
+                    <p>Venue: Moron, Virmgam</p>
+                    <p>Time: 20 hours, 2023</p>
+                    <p>Budget: 2000 Rs./pax</p>
+                    <button class="btn">Click here</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://via.placeholder.com/400x250.png?text=Ahmedabad+Trip" alt="Ahmedabad Trip">
+                <div class="event-info">
+                    <h3>Ahmedabad Trip</h3>
+                    <p>Venue: Wadhwan, Chatpot</p>
+                    <p>Time: 20 hours, 2023</p>
+                    <p>Budget: 2000 Rs./pax</p>
+                    <button class="btn">Register Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="past-events">
+        <h2>Past Events</h2>
+        <div class="events-grid">
+            <div class="event-card">
+                <img src="https://via.placeholder.com/400x250.png?text=Birth+Day+Party" alt="Birth Day Party">
+                <div class="event-info">
+                    <h3>Birth Day Party</h3>
+                    <p>Venue: The Chocolate Room</p>
+                    <p>Time: 20 hours, 2023</p>
+                    <p>Budget: 2000 Rs./pax</p>
+                    <button class="btn">Download Pic</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://via.placeholder.com/400x250.png?text=Cake+Cutting+Celebration" alt="Cake Cutting Celebration">
+                <div class="event-info">
+                    <h3>Cake Cutting Celebration</h3>
+                    <p>Venue: The Chocolate Room</p>
+                    <p>Time: 20 hours, 2023</p>
+                    <p>Budget: 2000 Rs./pax</p>
+                    <button class="btn">Download Pic</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-us">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Name:" required>
+            <input type="email" name="email" placeholder="Email:" required>
+            <textarea name="message" placeholder="Message:" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>© 2023 Event Hosting. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            fetch('http://localhost:3000/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(result => {
+                alert(result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            });
+        });
+    </script>
+</body>
+                                                                       </html>
+                                                                       
